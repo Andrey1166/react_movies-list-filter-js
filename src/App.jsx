@@ -9,10 +9,11 @@ function prepareStr(str) {
 
 export const App = () => {
   const [query, setQuery] = useState('');
+  const normalizedQuery = prepareStr(query);
   const visibleMovies = moviesFromServer.filter(
     movie =>
-      prepareStr(movie.title).includes(prepareStr(query)) ||
-      prepareStr(movie.description).includes(prepareStr(query)),
+      prepareStr(movie.title).includes(normalizedQuery) ||
+      prepareStr(movie.description).includes(normalizedQuery),
   );
 
   return (
